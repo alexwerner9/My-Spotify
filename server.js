@@ -1,5 +1,5 @@
 var http = require('http');
-var nodefetch = require('node-fetch');
+var fetch = require('node-fetch');
 var express = require('express');
 var path = require('path');
 const { renameSync } = require('fs');
