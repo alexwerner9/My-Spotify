@@ -37,10 +37,13 @@ function parseSpotifyResponse(req, s) {
 function requestAccessToken() {
     fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
+    headers: {
+        'Authorization': 'Basic *<d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe>*'
+    },
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': code,
-        'redirect_uri': 'https%3A%2F%2Fthawing-island-42941.herokuapp.com%2Fspotifyauth%2F',
+        'redirect_uri': "https%3A%2F%2Fthawing-island-42941.herokuapp.com%2Fspotifyauth%2F",
         'client_id': 'd8f5f88f01a644ee803480f73bda4708',
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
