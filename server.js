@@ -38,7 +38,7 @@ function requestAccessToken() {
     fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
-        'Authorization': 'Basic *<d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe>*'
+        'Authorization': 'Basic d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe'
     },
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
