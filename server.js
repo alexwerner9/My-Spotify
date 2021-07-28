@@ -41,7 +41,7 @@ function requestAccessToken() {
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': code, 
-        'redirect_uri': 'https%3A%2F%2Fthawing-island-42941.herokuapp.com%2Fspotifyauth%2F',
+        'redirect_uri': 'https://thawing-island-42941.herokuapp.com/spotifyauth/',
         'client_id': 'd8f5f88f01a644ee803480f73bda4708',
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
