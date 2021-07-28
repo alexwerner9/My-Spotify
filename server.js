@@ -5,6 +5,7 @@ var path = require('path');
 const { renameSync } = require('fs');
 
 var code = '';
+var access_token = '';
 
 function parseReqURL(url) {
     console.log(url);
@@ -47,6 +48,19 @@ function requestAccessToken() {
         })
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => access_token = data.access_token);
 
+    showCurrentSong();
+
+}
+
+function showCurrentSong() {
+    fetch('	https://api.spotify.com/v1/me/player', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + access_token
+        }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data));
 }
