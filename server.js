@@ -45,6 +45,7 @@ function requestAccessToken() {
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
     })
-    .then(response => console.log(response.json()));
+    .then(response => response.json())
+    .then(data => console.log(data));
 
 }
