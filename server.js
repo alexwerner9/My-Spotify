@@ -61,6 +61,6 @@ function showCurrentSong() {
             'Authorization': 'Bearer ' + access_token
         }
     })
-    .then(response => response.json())
+    .then(response => response)
     .then(data => console.log(data));
 }
