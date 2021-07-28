@@ -55,11 +55,12 @@ function requestAccessToken() {
 }
 
 function showCurrentSong() {
+    console.log(access_token);
     fetch('	https://api.spotify.com/v1/me/player', {
-        method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + Buffer.from(access_token).toString('base64')
-        }
+            'Authorization':'Bearer ' + access_token
+        },
+        json: true
     })
     .then(response => response.json())
     .then(data => console.log(data));
