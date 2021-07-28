@@ -22,7 +22,6 @@ express()
         console.log('in auth');
         parseSpotifyResponse(req, res);
         res.render('spotifyauth/spotify');
-        console.log(code);
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
