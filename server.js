@@ -58,7 +58,7 @@ function showCurrentSong() {
     fetch('	https://api.spotify.com/v1/me/player', {
         method: 'GET',
         headers: {
-            'Authorization': 'Bearer ' + access_token
+            'Authorization': 'Bearer ' + Buffer.from(access_token).toString('base64')
         }
     })
     .then(response => response.json())
