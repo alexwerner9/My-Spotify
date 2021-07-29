@@ -35,7 +35,7 @@ express()
         } else {
             showCurrentSong();
         }
-        if(songData) {
+        if(songData.item.name) {
             console.log("there is song data");
             res.render('body', {
                 song:songData.item.name
@@ -45,10 +45,6 @@ express()
             res.render('body', {
                 song:'Loading song ...'
             });
-            fetch('https://thawing-island-42941.herokuapp.com/requestsong')
-            .then(res.render('body', {
-                song:response
-            }))
         }
         res.end();
     })
