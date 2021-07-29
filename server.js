@@ -30,7 +30,7 @@ express()
         if(songData) {
             console.log("there is song data");
             res.render('body', {
-                song:songData.name
+                song:songData.item.name
             });
         } else {
             console.log("there is no song data");
