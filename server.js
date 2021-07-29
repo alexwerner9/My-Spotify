@@ -28,10 +28,12 @@ express()
             parseSpotifyResponse(req);
         }
         if(songData) {
+            console.log("there is song data");
             res.render('body', {
                 song:songData.name
             });
         } else {
+            console.log("there is no song data");
             res.render('body', {
                 song:'no song yet'
             });
