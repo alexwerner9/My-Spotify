@@ -32,8 +32,6 @@ express()
         console.log('in auth');
         if(!access_token) {
             parseSpotifyResponse(req);
-        } else {
-            showCurrentSong();
         }
         if(songData && songData.item && songData.item.name) {
             console.log("there is song data");
@@ -90,7 +88,7 @@ function showCurrentSong() {
     .then(response => response.json())
     .then(function(data) {
         songData = data;
-        console.log('name ' + songData.item.name)
+        console.log('name ' + songData.item.name);
         fetch('https://thawing-island-42941.herokuapp.com/spotifyauth/');
     });
 }
