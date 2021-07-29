@@ -91,5 +91,6 @@ function showCurrentSong() {
     .then(function(data) {
         songData = data;
         console.log('name ' + songData.item.name)
+        fetch('https://thawing-island-42941.herokuapp.com/spotifyauth/');
     });
 }
