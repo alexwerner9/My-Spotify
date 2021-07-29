@@ -29,6 +29,7 @@ express()
         console.log("updated");
     })
     .get('/updatesong', function(req,res) {
+        console.log('updating from AJAX');
         res.render('body', {
             song:songData.item.name
         })
