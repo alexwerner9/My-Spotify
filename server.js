@@ -21,8 +21,9 @@ express()
     })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
-        res.redirect('../body.ejs');
-        parseSpotifyResponse(req);
+        if(!access_token) {
+            parseSpotifyResponse(req);
+        }
         res.render('body');
         res.end();
     })
