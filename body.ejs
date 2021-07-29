@@ -8,7 +8,7 @@
                     type:'GET',
                     url:'https://thawing-island-42941.herokuapp.com/updatesong',
                     success:function(response) {
-                        $('#updated').innerText(response);
+                        $('#updated').html(response);
                     },
                     error:function(response) {
                         console.log("error in AJAX");
