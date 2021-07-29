@@ -30,6 +30,7 @@ express()
     })
     .get('/updatesong', function(req,res) {
         console.log('updating from AJAX');
+        showCurrentSong();
         console.log('current song: ' + songData.item.name)
         res.send(songData.item.name);
     })
