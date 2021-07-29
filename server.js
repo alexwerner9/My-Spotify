@@ -6,6 +6,7 @@ const { renameSync } = require('fs');
 
 var code = '';
 var access_token = '';
+var songData;
 
 function parseReqURL(url) {
     console.log(url);
@@ -17,14 +18,23 @@ express()
     .set('view engine', 'ejs')
     .get('/spotifyauth/start', function(req, res) {
         console.log(req.url);
-        res.render('spotifyauth/started/requestauth');
+        res.render('spotifyauth/started/requestauth', {
+            testVar:'this is a test'
+        });
     })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
         if(!access_token) {
             parseSpotifyResponse(req);
         }
-        res.render('body');
+        if(songData) {
+            res.render('body', {
+                song:songData.name
+            });
+        }
+        res.render('body', {
+            song:'no song yet'
+        });
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
