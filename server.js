@@ -49,8 +49,8 @@ function requestAccessToken() {
     })
     .then(response => response.json())
     .then(function(data) {
-        acess_token = data;
-        console.log('acess token' + data);
+        access_token = data;
+        console.log('acess token' + access_token);
         showCurrentSong();
     });
 
