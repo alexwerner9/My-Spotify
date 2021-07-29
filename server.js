@@ -31,10 +31,11 @@ express()
             res.render('body', {
                 song:songData.name
             });
+        } else {
+            res.render('body', {
+                song:'no song yet'
+            });
         }
-        res.render('body', {
-            song:'no song yet'
-        });
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
