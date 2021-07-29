@@ -32,7 +32,6 @@ function parseSpotifyResponse(req) {
     code = url.searchParams.get("code");
     console.log('Spotify code retrieved: ' + code);
     requestAccessToken();
-    console.log(code);
 }
 
 function requestAccessToken() {
@@ -49,9 +48,11 @@ function requestAccessToken() {
         })
     })
     .then(response => response.json())
-    .then(data => access_token = data.access_token);
-    console.log('access token ' + access_token);
-    showCurrentSong();
+    .then(function(data) {
+        acess_token = data;
+        console.log('acess token' + data);
+        showCurrentSong();
+    });
 
 }
 
