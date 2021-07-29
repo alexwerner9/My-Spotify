@@ -24,9 +24,7 @@ express()
     })
     .get('/requestsong', function(req,res) {
         showCurrentSong();
-        res.render('body', {
-            song:songData.item.name
-        })
+        res.send(songData.item.name);
         console.log("updated");
     })
     .get('/spotifyauth', function(req,res) {
@@ -46,6 +44,10 @@ express()
             res.render('body', {
                 song:'Loading song ...'
             });
+            var s = await fetch('https://thawing-island-42941.herokuapp.com/requestsong');
+            res.render('body', {
+                song:s
+            })
         }
         res.end();
     })
@@ -74,7 +76,7 @@ function requestAccessToken() {
     .then(response => response.json())
     .then(function(data) {
         access_token = data.access_token;
-        console.log('acess token' + access_token);
+        console.log('access token' + access_token);
         showCurrentSong();
     });
 
