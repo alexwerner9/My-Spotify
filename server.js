@@ -82,5 +82,6 @@ function showCurrentSong() {
     .then(response => response.json())
     .then(function(data) {
         songData = data;
+        console.log('name ' + songData.name)
     });
 }
