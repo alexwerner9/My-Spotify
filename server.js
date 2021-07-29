@@ -26,6 +26,8 @@ express()
         console.log('in auth');
         if(!access_token) {
             parseSpotifyResponse(req);
+        } else {
+            showCurrentSong();
         }
         if(songData) {
             console.log("there is song data");
