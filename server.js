@@ -35,7 +35,7 @@ express()
         } else {
             showCurrentSong();
         }
-        if(songData.item.name) {
+        if(songData && songData.item && songData.item.name) {
             console.log("there is song data");
             res.render('body', {
                 song:songData.item.name
