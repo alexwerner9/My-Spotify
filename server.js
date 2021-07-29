@@ -15,14 +15,15 @@ express()
     .use(express.static(__dirname))
     .set('views', __dirname)
     .set('view engine', 'ejs')
-    .get('/', function(req, res) {
+    .get('/spotifyauth/start', function(req, res) {
         console.log(req.url);
-        res.render('body');
+        res.render('spotifyauth/started/requestauth');
     })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
+        res.redirect('body.ejs');
         parseSpotifyResponse(req);
-        res.render('spotifyauth/spotify');
+        res.render('body');
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
