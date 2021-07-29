@@ -5,15 +5,15 @@
             setTimeout(() => {
                 console.log("inside AJAX");
                 $.ajax({
-                type:'GET',
-                url:'https://thawing-island-42941.herokuapp.com/updatesong',
-                success:function(response) {
-                    console.log('song in AJAX: ' + response);
-                },
-                error:function(response) {
-                    console.log("error in AJAX");
-                }
-            });
+                    type:'GET',
+                    url:'https://thawing-island-42941.herokuapp.com/updatesong',
+                    success:function(response) {
+                        $('#updated').innerText(response);
+                    },
+                    error:function(response) {
+                        console.log("error in AJAX");
+                    }
+                });
             }, 10000);
         </script>
         <div>
