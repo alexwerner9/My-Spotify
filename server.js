@@ -21,21 +21,22 @@ express()
     })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
-        parseSpotifyResponse(req, res);
+        parseSpotifyResponse(req);
         res.render('spotifyauth/spotify');
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
-function parseSpotifyResponse(req, s) {
+function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
     code = url.searchParams.get("code");
-    console.log('Code retrieved');
+    console.log('Spotify code retrieved: ' + code);
     requestAccessToken();
     console.log(code);
 }
 
 function requestAccessToken() {
+    console.log('requesting access token');
     var encoded = Buffer.from('d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe').toString('base64');
     fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
@@ -49,7 +50,7 @@ function requestAccessToken() {
     })
     .then(response => response.json())
     .then(data => access_token = data.access_token);
-
+    console.log('access token ' + access_token);
     showCurrentSong();
 
 }
