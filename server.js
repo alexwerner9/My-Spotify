@@ -28,6 +28,11 @@ express()
         res.send(songData.item.name);
         console.log("updated");
     })
+    .get('/updatesong', function(req,res) {
+        res.render('body', {
+            song:songData.item.name
+        })
+    })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
         if(!access_token) {
