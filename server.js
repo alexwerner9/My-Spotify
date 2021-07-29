@@ -25,7 +25,7 @@ express()
     })
     .get('/updatesong', function(req,res) {
         showCurrentSong();
-        res.send({'song':songData.item.name, 'artist':songData.item.album.artists.name});
+        res.send({'song':songData.item.name, 'artist':songData.item.album.artists[0].name});
     })
     .get('/', function(req,res) {
         console.log('in auth');
