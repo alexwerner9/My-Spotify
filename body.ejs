@@ -9,6 +9,9 @@
                 url:'https://thawing-island-42941.herokuapp.com/updatesong',
                 success:function(response) {
                     console.log('song in AJAX: ' + response);
+                },
+                error:function(response) {
+                    console.log("error in AJAX");
                 }
             });
             }, 10000);
