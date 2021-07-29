@@ -80,5 +80,7 @@ function showCurrentSong() {
         json: true
     })
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(function(data) {
+        songData = data;
+    });
 }
