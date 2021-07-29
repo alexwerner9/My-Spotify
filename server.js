@@ -22,6 +22,13 @@ express()
             testVar:'this is a test'
         });
     })
+    .get('/requestsong', function(req,res) {
+        showCurrentSong();
+        res.render('body', {
+            song:songData.item.name
+        })
+        console.log("updated");
+    })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
         if(!access_token) {
@@ -37,7 +44,7 @@ express()
         } else {
             console.log("there is no song data");
             res.render('body', {
-                song:'no song yet'
+                song:'Loading song ...'
             });
         }
         res.end();
