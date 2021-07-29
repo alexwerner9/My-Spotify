@@ -12,6 +12,7 @@
                     success:function(response) {
                         $('#song').html(response.song);
                         $('#artist').html(response.artist);
+                        $('#albumIMG').attribute('src', response.albumIMG);
                     },
                     error:function(response) {
                         console.log("error in AJAX");
@@ -21,7 +22,7 @@
 
         </script>
         <div class="center">
-            <p>Current song:</p>
+            <img src="" id="albumIMG">
             <p id="song">Loading song...</p>
             <p id="artist">Loading artist...</p>
         </div>
