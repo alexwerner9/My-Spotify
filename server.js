@@ -5,6 +5,8 @@ var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
 
+var id = 'd8f5f88f01a644ee803480f73bda4708';
+
 var code = '';
 var access_token = '';
 var songData;
@@ -17,39 +19,20 @@ express()
     .use(express.static(__dirname))
     .set('views', __dirname)
     .set('view engine', 'ejs')
-    .get('/spotifyauth/start', function(req, res) {
+    .get('/spotifyauth/' + id, function(req, res) {
         console.log(req.url);
-        res.render('spotifyauth/started/requestauth', {
-            testVar:'this is a test'
-        });
-    })
-    .get('/requestsong', function(req,res) {
-        showCurrentSong();
-        res.send(songData.item.name);
-        console.log("updated");
+        res.render('spotifyauth/started/requestauth');
     })
     .get('/updatesong', function(req,res) {
-        console.log('updating from AJAX');
         showCurrentSong();
-        console.log('current song: ' + songData.item.name)
         res.send(songData.item.name);
     })
-    .get('/spotifyauth', function(req,res) {
+    .get('/', function(req,res) {
         console.log('in auth');
         if(!access_token) {
             parseSpotifyResponse(req);
         }
-        if(songData && songData.item && songData.item.name) {
-            console.log("there is song data");
-            res.render('body', {
-                song:songData.item.name
-            });
-        } else {
-            console.log("there is no song data");
-            res.render('body', {
-                song:'Loading song ...'
-            });
-        }
+        res.render('body');
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
@@ -69,7 +52,7 @@ function requestAccessToken() {
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': code, 
-        'redirect_uri': 'https://thawing-island-42941.herokuapp.com/spotifyauth/',
+        'redirect_uri': 'https://thawing-island-42941.herokuapp.com/',
         'client_id': 'd8f5f88f01a644ee803480f73bda4708',
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
@@ -94,7 +77,5 @@ function showCurrentSong() {
     .then(response => response.json())
     .then(function(data) {
         songData = data;
-        console.log('name ' + songData.item.name);
-        fetch('https://thawing-island-42941.herokuapp.com/spotifyauth/');
     });
 }
