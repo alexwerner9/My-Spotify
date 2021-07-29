@@ -3,6 +3,7 @@ var fetch = require('node-fetch');
 var express = require('express');
 var path = require('path');
 const { renameSync } = require('fs');
+const { response } = require('express');
 
 var code = '';
 var access_token = '';
@@ -44,10 +45,10 @@ express()
             res.render('body', {
                 song:'Loading song ...'
             });
-            var s = await fetch('https://thawing-island-42941.herokuapp.com/requestsong');
-            res.render('body', {
-                song:s
-            })
+            fetch('https://thawing-island-42941.herokuapp.com/requestsong')
+            .then(res.render('body', {
+                song:response
+            }))
         }
         res.end();
     })
