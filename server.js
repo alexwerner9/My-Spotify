@@ -28,7 +28,7 @@ express()
         res.send({
             'song':songData.item.name,
             'artist':songData.item.album.artists[0].name,
-            'albumIMG':songData.item.album.artists[0].images[0].url
+            'albumIMG':songData.item.album.images[0].url
         });
     })
     .get('/', function(req,res) {
