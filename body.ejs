@@ -10,7 +10,8 @@
                     type:'GET',
                     url:'https://thawing-island-42941.herokuapp.com/updatesong',
                     success:function(response) {
-                        $('#updated').html(response);
+                        $('#song').html(response.song);
+                        $('#artist').html(response.artist);
                     },
                     error:function(response) {
                         console.log("error in AJAX");
@@ -21,7 +22,8 @@
         </script>
         <div class="center">
             <p>Current song:</p>
-            <p id="updated">Loading song...</p>
+            <p id="song">Loading song...</p>
+            <p id="artist">Loading artist...</p>
         </div>
     </body>
 </html>
