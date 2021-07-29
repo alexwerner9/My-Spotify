@@ -6,7 +6,10 @@
                 console.log("inside AJAX");
                 $.ajax({
                 type:'GET',
-                url:'https://thawing-island-42941.herokuapp.com/updatesong'
+                url:'https://thawing-island-42941.herokuapp.com/updatesong',
+                success:function(response) {
+                    console.log('song in AJAX: ' + response);
+                }
             });
             }, 10000);
         </script>

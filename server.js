@@ -30,9 +30,8 @@ express()
     })
     .get('/updatesong', function(req,res) {
         console.log('updating from AJAX');
-        res.render('body', {
-            song:songData.item.name
-        })
+        console.log('current song: ' + songData.item.name)
+        res.send(songData.item.name);
     })
     .get('/spotifyauth', function(req,res) {
         console.log('in auth');
