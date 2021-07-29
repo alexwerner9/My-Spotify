@@ -49,7 +49,7 @@ function requestAccessToken() {
     })
     .then(response => response.json())
     .then(function(data) {
-        access_token = data;
+        access_token = data.access_token;
         console.log('acess token' + access_token);
         showCurrentSong();
     });
