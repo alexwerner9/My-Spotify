@@ -6,6 +6,7 @@ var intervalId = window.setInterval(function(){
             $('#song').html(response.song);
             $('#artist').html(response.artist);
             $('#albumIMG').attr('src', response.albumIMG);
+            $('#songURL').attr('href', response.songURL);
         },
         error:function(response) {
             console.log("error in AJAX");
