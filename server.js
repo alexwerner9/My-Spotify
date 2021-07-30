@@ -88,6 +88,8 @@ function requestRefreshToken() {
     })
     .then(response => response.json())
     .then(function(data) {
+        console.log("data retrieved:");
+        console.log(data);
         access_token = data.access_token;
         refresh_token = data.refresh_token;
         console.log("Refreshed access code: " + access_token);
