@@ -16,7 +16,7 @@
             window.onSpotifyWebPlaybackSDKReady = () => {
                 const player = new Spotify.Player({
                     name:'Spotify Web Player',
-                    getOAuthToken: cd => { cb(token); }
+                    getOAuthToken: cb => { cb(token); }
                 });
                 player.addListener('initialization_error', ({ message }) => { console.error(message); });
                 player.addListener('authentication_error', ({ message }) => { console.error(message); });

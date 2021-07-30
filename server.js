@@ -31,7 +31,7 @@ express()
             'albumIMG':songData.item.album.images[1].url
         });
     })
-    .get('getaccesstoken', function(req,res) {
+    .get('/getaccesstoken', function(req,res) {
         res.send(access_token)
     })
     .get('/', function(req,res) {
