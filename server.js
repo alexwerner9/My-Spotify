@@ -100,7 +100,7 @@ function requestRefreshToken() {
 }
 
 function showCurrentSong() {
-    console.log("showCurrentSong");
+    console.log("showCurrentSong. token: " + access_token);
     fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             'Authorization':'Bearer ' + access_token
@@ -109,7 +109,6 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
-        
         songData = data;
     });
 }
