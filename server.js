@@ -90,7 +90,8 @@ function requestRefreshToken() {
     .then(reponse => response.json())
     .then(function(data) {
         access_token = data.access_token;
-        console.log("Refreshed access code: " + access_code);
+        refresh_token = data.refresh_token;
+        console.log("Refreshed access code: " + access_token);
         setTimeout(function() {
             console.log("Time almost expired. Calling refresh");
             requestRefreshToken();
@@ -108,6 +109,7 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
+        
         songData = data;
     });
 }
