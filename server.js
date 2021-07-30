@@ -68,7 +68,7 @@ function requestAccessToken() {
         setTimeout(function() {
             console.log("in requestAccessToken");
             requestRefreshToken();
-        }, 5000);
+        }, (3540000));
         showCurrentSong();
     });
 
@@ -91,12 +91,11 @@ function requestRefreshToken() {
         console.log("data retrieved:");
         console.log(data);
         access_token = data.access_token;
-        refresh_token = data.refresh_token;
         console.log("Refreshed access code: " + access_token);
         setTimeout(function() {
             console.log("Time almost expired. Calling refresh");
             requestRefreshToken();
-        }, 10000);
+        }, (3540000));
     });
 }
 
