@@ -65,7 +65,6 @@ function requestAccessToken() {
     .then(function(data) {
         access_token = data.access_token;
         refresh_token = data.refresh_token;
-        console.log('access token' + access_token);
         setTimeout(function() {
             console.log("in requestAccessToken");
             requestRefreshToken();
@@ -100,7 +99,6 @@ function requestRefreshToken() {
 }
 
 function showCurrentSong() {
-    console.log("showCurrentSong. token: " + access_token);
     fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             'Authorization':'Bearer ' + access_token
@@ -109,8 +107,7 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
-        console.log("fetched update: ");
-        console.log(data);
+        console.log("fetched update");
         songData = data;
     });
 }
