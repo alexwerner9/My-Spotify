@@ -76,7 +76,7 @@ function requestAccessToken() {
 
 function showCurrentSong() {
     console.log(access_token);
-    fetch('	https://api.spotify.com/v1/me/player', {
+    fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             'Authorization':'Bearer ' + access_token
         },
