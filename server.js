@@ -109,6 +109,8 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
+        console.log("fetched update: ");
+        console.log(data);
         songData = data;
     });
 }
