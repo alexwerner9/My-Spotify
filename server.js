@@ -72,8 +72,9 @@ function requestAccessToken() {
         refresh_token = data.refresh_token;
         console.log('access token' + access_token);
         setTimeout(function() {
+            console.log("in requestAccessToken");
             requestRefreshToken();
-        }, 1000);
+        }, 5000);
         showCurrentSong();
     });
 
@@ -95,11 +96,11 @@ function requestRefreshToken() {
     .then(function(data) {
         access_code = data.access_code;
         console.log("Refreshed access code: " + access_code);
+        setTimeout(function() {
+            console.log("Time almost expired. Calling refresh");
+            requestRefreshToken();
+        }, 10000);
     });
-    setTimeout(function() {
-        console.log("Time almost expired. Calling refresh");
-        requestRefreshToken();
-    }, 10000);
 }
 
 function showCurrentSong() {
