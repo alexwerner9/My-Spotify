@@ -3,10 +3,36 @@
         <link href="/css/style.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="client.js"></script>
+        <script src="https://sdk.scdn.co/spotify-player.js"></script>
+        <script>
+            var token;
+            $.ajax({
+                type:'GET',
+                url:'https://thawing-island-42941.herokuapp.com/getaccesstoken',
+                success:function(response) {
+                    token = response;
+                }
+            });
+            window.onSpotifyWebPlaybackSDKReady = () => {
+                const player = new Spotify.Player({
+                    name:'Spotify Web Player',
+                    getOAuthToken: cd => { cb(token); }
+                })
+            }
+            player.addListener('initialization_error', ({ message }) => { console.error(message); });
+            player.addListener('authentication_error', ({ message }) => { console.error(message); });
+            player.addListener('account_error', ({ message }) => { console.error(message); });
+            player.addListener('playback_error', ({ message }) => { console.error(message); });
+            player.addListener('ready', ({device_id}) => {
+                console.log('Ready with token');
+            })
+            player.connect();
+
+        </script>
         <div class="center">
             <img src="https://i.scdn.co/image/ab67616d00001e02f292ec02a050dd8a6174cd4e" id="albumIMG">
-            <p id="song">Loading song...</p>
-            <p id="artist">Loading artist...</p>
+            <p id="song">No song playing</p>
+            <p id="artist"></p>
         </div>
     </body>
 </html>

@@ -1,5 +1,4 @@
 var intervalId = window.setInterval(function(){
-    console.log("inside AJAX");
     $.ajax({
         type:'GET',
         url:'https://thawing-island-42941.herokuapp.com/updatesong',
