@@ -79,7 +79,7 @@ function requestRefreshToken() {
     fetch('https://accounts.spotify.com/api/token', {
         method:'POST',
         headers: {
-            'Authorization':'Bearer ' + encoded
+            'Authorization':'Basic ' + encoded
         },
         body: new URLSearchParams({
             'grant_type':'refresh_token',
