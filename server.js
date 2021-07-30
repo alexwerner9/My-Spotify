@@ -5,10 +5,12 @@ var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
 
+var encoded = Buffer.from('d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe').toString('base64');
 var id = 'd8f5f88f01a644ee803480f73bda4708';
 
 var code = '';
 var access_token = '';
+var refresh_token = '';
 var songData;
 
 function parseReqURL(url) {
@@ -54,7 +56,6 @@ function parseSpotifyResponse(req) {
 
 function requestAccessToken() {
     console.log('requesting access token');
-    var encoded = Buffer.from('d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe').toString('base64');
     fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     body: new URLSearchParams({
@@ -68,10 +69,37 @@ function requestAccessToken() {
     .then(response => response.json())
     .then(function(data) {
         access_token = data.access_token;
+        refresh_token = data.refresh_token;
         console.log('access token' + access_token);
+        setTimeout(function() {
+            requestRefreshToken();
+        }, 1000);
         showCurrentSong();
     });
 
+}
+
+function requestRefreshToken() {
+    console.log("Requesting new access code. Refresh token: " + refresh_token);
+    fetch('https://accounts.spotify.com/api/token', {
+        method:'POST',
+        headers: {
+            'Authorization':'Bearer ' + encoded
+        },
+        body: new URLSearchParams({
+            'grant_type':'refresh_token',
+            'refresh_token':refresh_token
+        })
+    })
+    .then(reponse => response.json())
+    .then(function(data) {
+        access_code = data.access_code;
+        console.log("Refreshed access code: " + access_code);
+    });
+    setTimeout(function() {
+        console.log("Time almost expired. Calling refresh");
+        requestRefreshToken();
+    }, (access_token.expires_in - 60) * 1000);
 }
 
 function showCurrentSong() {
