@@ -86,7 +86,7 @@ function requestRefreshToken() {
             'refresh_token':refresh_token
         })
     })
-    .then(reponse => response.json())
+    .then(response => response.json())
     .then(function(data) {
         access_token = data.access_token;
         refresh_token = data.refresh_token;
