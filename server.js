@@ -99,7 +99,7 @@ function requestRefreshToken() {
     setTimeout(function() {
         console.log("Time almost expired. Calling refresh");
         requestRefreshToken();
-    }, (access_token.expires_in - 60) * 1000);
+    }, 10000);
 }
 
 function showCurrentSong() {
