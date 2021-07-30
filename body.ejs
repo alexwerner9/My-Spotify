@@ -17,16 +17,16 @@
                 const player = new Spotify.Player({
                     name:'Spotify Web Player',
                     getOAuthToken: cd => { cb(token); }
+                });
+                player.addListener('initialization_error', ({ message }) => { console.error(message); });
+                player.addListener('authentication_error', ({ message }) => { console.error(message); });
+                player.addListener('account_error', ({ message }) => { console.error(message); });
+                player.addListener('playback_error', ({ message }) => { console.error(message); });
+                player.addListener('ready', ({device_id}) => {
+                    console.log('Ready with token');
                 })
+                player.connect();
             }
-            player.addListener('initialization_error', ({ message }) => { console.error(message); });
-            player.addListener('authentication_error', ({ message }) => { console.error(message); });
-            player.addListener('account_error', ({ message }) => { console.error(message); });
-            player.addListener('playback_error', ({ message }) => { console.error(message); });
-            player.addListener('ready', ({device_id}) => {
-                console.log('Ready with token');
-            })
-            player.connect();
 
         </script>
         <div class="center">
