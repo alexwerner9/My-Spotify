@@ -1,6 +1,7 @@
 var http = require('http');
 var fetch = require('node-fetch');
 var express = require('express');
+var cors = require('cors');
 var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
@@ -23,6 +24,7 @@ express()
     .get('/updatesong', function(req,res) {
         showCurrentSong();
         res.send({
+            header
             'song':songData.item.name,
             'artist':songData.item.album.artists[0].name,
             'albumIMG':songData.item.album.images[1].url,
@@ -42,9 +44,7 @@ express()
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
-express().use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin','http://thawing-island-42941.herokuapp.com');
-})
+express().use(cors());
 
 function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
