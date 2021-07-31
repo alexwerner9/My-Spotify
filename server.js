@@ -112,6 +112,5 @@ function showCurrentSong() {
     .then(function(data) {
         console.log("fetched update");
         songData = data;
-        showCurrentSong();
     });
 }
