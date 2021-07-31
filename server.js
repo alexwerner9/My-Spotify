@@ -23,7 +23,6 @@ express()
         res.render('spotifyauth/started/requestauth');
     })
     .get('/updatesong', function(req,res) {
-        showCurrentSong();
         res.send({
             'song':songData.item.name,
             'artist':songData.item.album.artists[0].name,
@@ -102,15 +101,18 @@ function requestRefreshToken() {
 }
 
 function showCurrentSong() {
-    fetch('https://api.spotify.com/v1/me/player', {
-        headers: {
-            'Authorization':'Bearer ' + access_token
-        },
-        json: true
-    })
-    .then(response => response.json())
-    .then(function(data) {
-        console.log("fetched update");
-        songData = data;
-    });
+    setTimeout(function() {
+        fetch('https://api.spotify.com/v1/me/player', {
+            headers: {
+                'Authorization':'Bearer ' + access_token
+            },
+            json: true
+        })
+        .then(response => response.json())
+        .then(function(data) {
+            console.log("fetched update");
+            songData = data;
+            showCurrentSong();
+        });
+    }, 1000)
 }
