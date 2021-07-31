@@ -20,6 +20,7 @@ express()
     .set('views', __dirname)
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
+        setInterval(showCurrentSong, 1000);
         res.render('spotifyauth/started/requestauth');
     })
     .get('/updatesong', function(req,res) {
@@ -34,7 +35,6 @@ express()
         res.send(access_token)
     })
     .get('/', function(req,res) {
-        console.log('in auth');
         if(!access_token) {
             parseSpotifyResponse(req);
         }
@@ -101,18 +101,17 @@ function requestRefreshToken() {
 }
 
 function showCurrentSong() {
-    setTimeout(function() {
-        fetch('https://api.spotify.com/v1/me/player', {
-            headers: {
-                'Authorization':'Bearer ' + access_token
-            },
-            json: true
-        })
-        .then(response => response.json())
-        .then(function(data) {
-            console.log("fetched update");
-            songData = data;
-            showCurrentSong();
-        });
-    }, 1000)
+    console.log("requesting from API");
+    fetch('https://api.spotify.com/v1/me/player', {
+        headers: {
+            'Authorization':'Bearer ' + access_token
+        },
+        json: true
+    })
+    .then(response => response.json())
+    .then(function(data) {
+        console.log("fetched update");
+        songData = data;
+        showCurrentSong();
+    });
 }

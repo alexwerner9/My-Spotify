@@ -8,6 +8,7 @@ var intervalId = window.setInterval(function(){
             $('#artist').html(response.artist);
             $('#albumIMG').attr('src', response.albumIMG);
             $('#panel').attr('href',response.songURL);
+            $('#favicon').attr('href',response.albumIMG);
             console.log(response.songURL);
         },
         error:function(response) {
