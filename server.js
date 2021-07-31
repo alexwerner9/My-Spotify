@@ -16,6 +16,7 @@ var songData;
 
 express()
     .use(express.static(__dirname))
+    .use(cors())
     .set('views', __dirname)
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
@@ -42,8 +43,6 @@ express()
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
-
-express.use(cors());
 
 function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
