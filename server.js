@@ -16,7 +16,6 @@ var songData;
 
 express()
     .use(express.static(__dirname))
-    .use(cors())
     .set('views', __dirname)
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
