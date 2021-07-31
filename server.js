@@ -44,7 +44,7 @@ express()
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
-express().use(cors());
+express.use(cors());
 
 function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
