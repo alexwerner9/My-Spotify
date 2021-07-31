@@ -42,7 +42,7 @@ express()
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
-express.use(function(req, res, next) {
+express().use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin','http://thawing-island-42941.herokuapp.com');
 })
 
