@@ -24,7 +24,6 @@ express()
     .get('/updatesong', function(req,res) {
         showCurrentSong();
         res.send({
-            header
             'song':songData.item.name,
             'artist':songData.item.album.artists[0].name,
             'albumIMG':songData.item.album.images[1].url,
