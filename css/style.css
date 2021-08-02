@@ -35,6 +35,8 @@ body {
     font-size:30px;
     width:10%;
     line-height:100%;
+    padding-right:15px;
+    padding-left:15px;
     z-index:3;
 }
 #song:hover {

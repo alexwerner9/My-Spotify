@@ -31,9 +31,6 @@ express()
             'songURL':songData.item.album.external_urls.spotify
         });
     })
-    .get('/getaccesstoken', function(req,res) {
-        res.send(access_token)
-    })
     .get('/', function(req,res) {
         if(!access_token) {
             parseSpotifyResponse(req);
