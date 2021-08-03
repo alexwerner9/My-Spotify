@@ -40,7 +40,7 @@ express()
         if(!access_token) {
             parseSpotifyResponse(req);
         }
-        res.render('body');
+        res.render('front_end/body');
         res.end();
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
