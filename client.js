@@ -1,7 +1,7 @@
 var intervalId = window.setInterval(function(){
     $.ajax({
         type:'GET',
-        url:'https://thawing-island-42941.herokuapp.com/updatesong',
+        url:'http://www.alex-werner.com/updatesong',
         success:function(response) {
             $('#song').html(response.song);
             $('#title').html(response.song);
@@ -10,7 +10,6 @@ var intervalId = window.setInterval(function(){
             $('#albumIMG').attr('src', response.albumIMG);
             $('#panel').attr('href',response.songURL);
             $('#favicon').attr('href',response.albumIMG);
-            console.log(response.songURL);
         },
         error:function(response) {
             console.log("error in AJAX");

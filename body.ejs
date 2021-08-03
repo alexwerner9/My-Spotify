@@ -8,31 +8,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="client.js"></script>
         <script src="https://sdk.scdn.co/spotify-player.js"></script>
-        <script>
-            var token;
-            $.ajax({
-                type:'GET',
-                url:'https://thawing-island-42941.herokuapp.com/getaccesstoken',
-                success:function(response) {
-                    token = response;
-                }
-            });
-            window.onSpotifyWebPlaybackSDKReady = () => {
-                const player = new Spotify.Player({
-                    name:'Spotify Web Player',
-                    getOAuthToken: cb => { cb(token); }
-                });
-                player.addListener('initialization_error', ({ message }) => { console.error(message); });
-                player.addListener('authentication_error', ({ message }) => { console.error(message); });
-                player.addListener('account_error', ({ message }) => { console.error(message); });
-                player.addListener('playback_error', ({ message }) => { console.error(message); });
-                player.addListener('ready', ({device_id}) => {
-                    console.log('Ready with token');
-                })
-                player.connect();
-            }
-
-        </script>
         <div class="center">
             <a href="" id="panel" target="_blank">
                 <span class="span_link"></span>
