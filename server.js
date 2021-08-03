@@ -22,7 +22,7 @@ express()
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
         setInterval(showCurrentSong, 1000);
-        res.render('../front_end/requestauth');
+        res.render('front_end/requestauth');
     })
     .get('/updatesong', function(req,res) {
         res.send({
