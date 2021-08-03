@@ -36,7 +36,7 @@ express()
         res.send(access_token)
     })
     .get('/', function(req,res) {
-        console.log("New visitor / refresh");
+        console.log("New visitor / refresh!");
         if(!access_token) {
             parseSpotifyResponse(req);
         }
