@@ -57,7 +57,7 @@ function requestAccessToken() {
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': code, 
-        'redirect_uri': 'https://thawing-island-42941.herokuapp.com/',
+        'redirect_uri': 'http://www.alex-werner.com/',
         'client_id': 'd8f5f88f01a644ee803480f73bda4708',
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
