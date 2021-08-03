@@ -22,7 +22,7 @@ express()
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
         setInterval(showCurrentSong, 1000);
-        res.render('requestauth');
+        res.render('../front_end/requestauth');
     })
     .get('/updatesong', function(req,res) {
         res.send({
@@ -36,7 +36,7 @@ express()
         res.send(access_token)
     })
     .get('/', function(req,res) {
-        console.log("New visitor / refresh!");
+        console.log("New visitor / refresh");
         if(!access_token) {
             parseSpotifyResponse(req);
         }
