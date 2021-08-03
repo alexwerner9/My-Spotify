@@ -6,8 +6,9 @@ var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
 
-var encoded = Buffer.from('d8f5f88f01a644ee803480f73bda4708:ccae11a4e8004f569057ac21549afdbe').toString('base64');
-var id = 'd8f5f88f01a644ee803480f73bda4708';
+var id = process.env.SPOTIFY_ID;
+var secret = process.env.SPOTIFY_SECRET;
+var encoded = Buffer.from(id + ':' + secret).toString('base64');
 
 var code = '';
 var access_token = '';
@@ -59,8 +60,8 @@ function requestAccessToken() {
         'grant_type': 'authorization_code',
         'code': code, 
         'redirect_uri': 'http://www.alex-werner.com/',
-        'client_id': 'd8f5f88f01a644ee803480f73bda4708',
-        'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
+        'client_id':id,
+        'client_secret':secret
         })
     })
     .then(response => response.json())
