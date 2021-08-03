@@ -35,6 +35,7 @@ express()
         res.send(access_token)
     })
     .get('/', function(req,res) {
+        console.log("New visitor / refresh");
         if(!access_token) {
             parseSpotifyResponse(req);
         }
@@ -67,7 +68,6 @@ function requestAccessToken() {
         access_token = data.access_token;
         refresh_token = data.refresh_token;
         setTimeout(function() {
-            console.log("in requestAccessToken");
             requestRefreshToken();
         }, (3540000));
         showCurrentSong();
@@ -76,7 +76,6 @@ function requestAccessToken() {
 }
 
 function requestRefreshToken() {
-    console.log("Requesting new access code. Refresh token: " + refresh_token);
     fetch('https://accounts.spotify.com/api/token', {
         method:'POST',
         headers: {
@@ -89,19 +88,14 @@ function requestRefreshToken() {
     })
     .then(response => response.json())
     .then(function(data) {
-        console.log("data retrieved:");
-        console.log(data);
         access_token = data.access_token;
-        console.log("Refreshed access code: " + access_token);
         setTimeout(function() {
-            console.log("Time almost expired. Calling refresh");
             requestRefreshToken();
         }, (3540000));
     });
 }
 
 function showCurrentSong() {
-    console.log("requesting from API");
     fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             'Authorization':'Bearer ' + access_token
