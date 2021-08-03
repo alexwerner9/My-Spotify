@@ -15,4 +15,4 @@ var intervalId = window.setInterval(function(){
             console.log("error in AJAX");
         }
     });
-}, 1000);
+}, 2000);
