@@ -16,7 +16,7 @@ var refresh_token = '';
 var songData;
 
 express()
-    .use(express.static(__dirname))
+    .use(express.static(__dirname + '/front_end'))
     .use(cors())
     .set('views', __dirname)
     .set('view engine', 'ejs')
