@@ -31,8 +31,10 @@ express()
             'songURL':songData.item.album.external_urls.spotify
         });
     })
+    .get('/getaccesstoken', function(req,res) {
+        res.send(access_token)
+    })
     .get('/', function(req,res) {
-        console.log("New visit / refresh");
         if(!access_token) {
             parseSpotifyResponse(req);
         }
@@ -44,16 +46,18 @@ express()
 function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
     code = url.searchParams.get("code");
+    console.log('Spotify code retrieved: ' + code);
     requestAccessToken();
 }
 
 function requestAccessToken() {
+    console.log('requesting access token');
     fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     body: new URLSearchParams({
         'grant_type': 'authorization_code',
         'code': code, 
-        'redirect_uri': 'http://www.alex-werner.com/',
+        'redirect_uri': 'https://thawing-island-42941.herokuapp.com/',
         'client_id': 'd8f5f88f01a644ee803480f73bda4708',
         'client_secret': 'ccae11a4e8004f569057ac21549afdbe'
         })
@@ -63,6 +67,7 @@ function requestAccessToken() {
         access_token = data.access_token;
         refresh_token = data.refresh_token;
         setTimeout(function() {
+            console.log("in requestAccessToken");
             requestRefreshToken();
         }, (3540000));
         showCurrentSong();
@@ -71,6 +76,7 @@ function requestAccessToken() {
 }
 
 function requestRefreshToken() {
+    console.log("Requesting new access code. Refresh token: " + refresh_token);
     fetch('https://accounts.spotify.com/api/token', {
         method:'POST',
         headers: {
@@ -83,8 +89,12 @@ function requestRefreshToken() {
     })
     .then(response => response.json())
     .then(function(data) {
+        console.log("data retrieved:");
+        console.log(data);
         access_token = data.access_token;
+        console.log("Refreshed access code: " + access_token);
         setTimeout(function() {
+            console.log("Time almost expired. Calling refresh");
             requestRefreshToken();
         }, (3540000));
     });
@@ -100,6 +110,7 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
+        console.log("fetched update");
         songData = data;
     });
 }
