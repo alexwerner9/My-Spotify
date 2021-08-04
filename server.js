@@ -90,7 +90,7 @@ function requestRefreshToken() {
     .then(response => response.json())
     .then(function(data) {
         access_token = data.access_token;
-        setTimeout(function() {
+        setInterval(function() {
             requestRefreshToken();
         }, (3540000));
     });
