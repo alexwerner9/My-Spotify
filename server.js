@@ -44,7 +44,6 @@ express()
         res.end();
     })
     .post('/search', function(req,res) {
-        console.log(req);
         console.log(req.input);
         res.send(req.input);
     })
