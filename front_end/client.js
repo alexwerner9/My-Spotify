@@ -21,9 +21,11 @@ document.getElementById('search_bar').addEventListener('input', function(element
     $.ajax({
         type:'POST',
         url:'http://www.alex-werner.com/search',
-        body:element.target.value,
+        body: {
+            input:element.target.value
+        },
         success:function(response) {
-            console.log("Returned " + response);
+            console.log(response);
         },
         error:function(response) {
             console.log("Couldnt search");
