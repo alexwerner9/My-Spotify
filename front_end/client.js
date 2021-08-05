@@ -5,7 +5,6 @@ var intervalId = window.setInterval(function(){
         success:function(response) {
             $('#song').html(response.song);
             $('#title').html(response.song);
-            $('#song').attr('href', response.songURL);
             $('#artist').html(response.artist);
             $('#albumIMG').attr('src', response.albumIMG);
             $('#panel').attr('href',response.songURL);
@@ -16,3 +15,34 @@ var intervalId = window.setInterval(function(){
         }
     });
 }, 2000);
+
+document.getElementById('search_bar').addEventListener('input', function(element) {
+
+    $.ajax({
+        type:'POST',
+        url:'http://www.alex-werner.com/search',
+        body:element.target.value,
+        success:function(response) {
+            console.log("Returned " + response);
+        },
+        error:function(response) {
+            console.log("Couldnt search");
+        }
+    });
+
+})
+
+function playlistClicked() {
+    
+    if(document.getElementById('panel').style.display == "none") {
+        document.getElementById('panel').style.display = "block";
+        document.getElementById('search_bar').style.display = "none";
+        document.getElementById('main_div').style.top = "50%";
+        $('#playlist').html("Add a song to my playlist");        
+    } else {
+        document.getElementById('panel').style.display = "none";
+        document.getElementById('search_bar').style.display = "initial";
+        document.getElementById('main_div').style.top = "20%";
+        $('#playlist').html("Return to current song");
+    }
+}

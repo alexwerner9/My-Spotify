@@ -43,6 +43,9 @@ express()
         res.render('front_end/body');
         res.end();
     })
+    .post('/search', function(req,res) {
+        res.send(req);
+    })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
 function parseSpotifyResponse(req) {

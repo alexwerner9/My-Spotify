@@ -2,28 +2,36 @@ body {
     background-color: rgb(30,30,30);
 }
 
-.center {
+
+#main_div {
+    margin:auto;
     text-align: center;
     color: white;
-    margin: 0;
     position: absolute;
+    margin: 0;
     top: 50%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background-color:rgb(39, 39, 39);
     z-index:2;
 }
-.span_link {
-    position:absolute; 
-    width:100%;
-    height:100%;
-    top:0;
-    left: 0;
-    z-index: 1;
+.box1 {
+    background-color:rgb(39, 39, 39);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    padding-top:10%;
+    padding-bottom:3%;
+    border-radius:6px;
 }
-.center:hover {
+.box1:hover {
+    background-color:rgb(50,50,50);
+}
+
+.box2 {
+    background-color:rgb(39, 39, 39);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius:6px;
+}
+.box2:hover {
     background-color:rgb(50,50,50);
 }
 
@@ -33,21 +41,12 @@ body {
     font-weight: bold;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:30px;
-    width:10%;
     line-height:100%;
-    padding-right:15px;
-    padding-left:15px;
-    z-index:3;
-}
-#song:hover {
-    color:lightgray;
-    z-index:3;
 }
 #artist {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:27px;
     white-space:nowrap;
-    padding-bottom:10px;
     z-index:3;
 }
 #albumIMG {
@@ -56,9 +55,37 @@ body {
     height:70%;
     max-width:300px;
     max-height:300px;
-    padding:20px;
 }
 .song_div {
+    text-decoration:none;
     max-width:450px;
     line-height:50%;
+}
+
+#playlist {
+    font-size:27px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    padding:10px;
+}
+
+#panel {
+    text-align:center;
+    text-decoration:none;
+    color:white;
+}
+
+#search_bar {
+    width:100%;
+    box-sizing:border-box;
+    background-color:rgb(50, 50, 50);
+    height:50px;
+    width:400px;
+    display: none;
+    text-decoration:none;
+    font-weight: bold;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:30px;
+    border-radius:6px;
+    color:white;
+    border:0;
 }

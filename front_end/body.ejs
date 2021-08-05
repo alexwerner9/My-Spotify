@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
     <head>
         <link rel="icon" href="https://i.scdn.co/image/ab67616d00001e02f292ec02a050dd8a6174cd4e" id="favicon">
@@ -6,17 +7,19 @@
     <body>
         <link href="/css/style.css" rel="stylesheet" type="text/css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="client.js"></script>
-        <div class="center">
-            <a href="" id="panel" target="_blank">
-                <span class="span_link"></span>
+        <div class="center" id="main_div">
+            <a href="" id="panel" class="box1" style="display:block">
+                <div class="song_div" id="song_div">
+                    <img src="https://i.scdn.co/image/ab67616d00001e02f292ec02a050dd8a6174cd4e" id="albumIMG">
+                    <p id="song">No current song</p>
+                    <p id="artist">No current artist</p>
+                </div>
             </a>
-            <img src="https://i.scdn.co/image/ab67616d00001e02f292ec02a050dd8a6174cd4e" id="albumIMG">
-            <br>
-            <div class="song_div">
-                <a href="" id="song" target="_blank">No current song</a>
-                <p id="artist">No current artist</p>
+            <div class="box2" onclick="playlistClicked()">
+                <p id="playlist">Add song to my playlist</p>
             </div>
+            <input type="text" placeholder="Song" id="search_bar">
         </div>
+        <script src="client.js"></script>
     </body>
 </html>
