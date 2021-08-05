@@ -55,7 +55,7 @@ app.post('/search', function(req,res) {
         },
         body: new URLSearchParams({
             "q":req.body.input,
-            "type": { track },
+            "type":"track"
         }),
         json: true
     })
