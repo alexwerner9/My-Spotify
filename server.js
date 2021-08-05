@@ -6,8 +6,8 @@ var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
 
-var id = process.env.SPOTIFY_ID;
-var secret = process.env.SPOTIFY_SECRET;
+var id = process.env.CLIENT_ID;
+var secret = process.env.CLIENT_SECRET;
 var encoded = Buffer.from(id + ':' + secret).toString('base64');
 
 var code = '';
