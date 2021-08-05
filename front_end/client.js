@@ -23,7 +23,7 @@ document.getElementById('search_bar').addEventListener('input', function(element
         type:'POST',
         url:'http://www.alex-werner.com/search',
         body: JSON.stringify({'input':element.target.value,"test":"test data"}),
-        headers; {
+        headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
@@ -35,7 +35,7 @@ document.getElementById('search_bar').addEventListener('input', function(element
         }
     });
 
-})
+});
 
 function playlistClicked() {
     
