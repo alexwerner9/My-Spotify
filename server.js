@@ -48,9 +48,16 @@ app.get('/', function(req,res) {
     });
 
 app.post('/search', function(req,res) {
-    
-    
-    
+    fetch(`https://api.spotify.com/v1/search?q=${req.body.input}&type=track"`, {
+        headers: {
+            'Authorization':'Bearer ' + access_token
+        },
+        json: true
+    })
+    .then(response => response.json())
+    .then(function(data) {
+        res.send(data.items[0].name);
+    });
 });
 
 app.listen(process.env.PORT || 80, () => console.log('Listening'));
@@ -65,13 +72,13 @@ function parseSpotifyResponse(req) {
 function requestAccessToken() {
     console.log('requesting access token');
     fetch('https://accounts.spotify.com/api/token', {
-        method: 'POST',
-        body: new URLSearchParams({
-            'grant_type': 'authorization_code',
-            'code': code, 
-            'redirect_uri': 'http://www.alex-werner.com/',
-            'client_id':id,
-            'client_secret':secret
+    method: 'POST',
+    body: new URLSearchParams({
+        'grant_type': 'authorization_code',
+        'code': code, 
+        'redirect_uri': 'http://www.alex-werner.com/',
+        'client_id':id,
+        'client_secret':secret
         })
     })
     .then(response => response.json())
@@ -115,6 +122,7 @@ function showCurrentSong() {
     })
     .then(response => response.json())
     .then(function(data) {
+        console.log(data);
         songData = data;
     });
 }
