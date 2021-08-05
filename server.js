@@ -48,7 +48,7 @@ app.get('/', function(req,res) {
     });
 
 app.post('/search', function(req,res) {
-    console.log(JSON.stringify(req));
+    console.log(req);
     res.send(req.body.input);
 });
 
