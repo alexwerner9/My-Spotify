@@ -120,7 +120,7 @@ function showCurrentSong() {
         },
         json: true
     })
-    .then(response => response.json())
+    .then(response => console.log(response))
     .then(function(data) {
         console.log(data);
         songData = data;
