@@ -45,7 +45,7 @@ express()
         res.end();
     })
     .post('/search', function(req,res) {
-        console.log(req.body.input);
+        console.log(req.body);
         res.send(req.body.input);
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));

@@ -23,7 +23,7 @@ document.getElementById('search_bar').addEventListener('input', function(element
         type:'POST',
         url:'http://www.alex-werner.com/search',
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         },
         body: {
             "input":element.target.value
