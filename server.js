@@ -18,6 +18,7 @@ var songData;
 express()
     .use(express.static(__dirname + '/front_end'))
     .use(cors())
+    .use(express.json())
     .set('views', __dirname)
     .set('view engine', 'ejs')
     .get('/spotifyauth/' + id, function(req, res) {
@@ -44,8 +45,8 @@ express()
         res.end();
     })
     .post('/search', function(req,res) {
-        console.log(req.input);
-        res.send(req.input);
+        console.log(req.body.input);
+        res.send(req.body.input);
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
