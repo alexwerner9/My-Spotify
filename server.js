@@ -1,6 +1,7 @@
 var http = require('http');
 var fetch = require('node-fetch');
 var express = require('express');
+var app = express();
 var cors = require('cors');
 var path = require('path');
 const { renameSync } = require('fs');
@@ -15,12 +16,14 @@ var access_token = '';
 var refresh_token = '';
 var songData;
 
-express()
+app
     .use(express.static(__dirname + '/front_end'))
     .use(cors())
     .use(express.json())
     .set('views', __dirname)
-    .set('view engine', 'ejs')
+    .set('view engine', 'ejs');
+
+app
     .get('/spotifyauth/' + id, function(req, res) {
         setInterval(showCurrentSong, 1000);
         res.render('front_end/requestauth');
