@@ -22,10 +22,8 @@ document.getElementById('search_bar').addEventListener('input', function(element
     $.ajax({
         type:'POST',
         url:'http://www.alex-werner.com/search',
-        headers: {
-            'Content-Type':'application/json'
-        },
-        body: JSON.stringify({input:element.target.value}),
+        contentType:"application/json",
+        body: JSON.stringify({'input':element.target.value}),
         success:function(response) {
             console.log(response);
         },
