@@ -20,7 +20,7 @@ app
     .use(express.static(__dirname + '/front_end'))
     .use(cors())
     .use(express.json())
-    .use(bodyParser.urlencoded({extended : true}));
+    .use(express.urlencoded({extended : true}))
     .set('views', __dirname)
     .set('view engine', 'ejs');
 
