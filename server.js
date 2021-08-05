@@ -71,7 +71,7 @@ function requestAccessToken() {
     .then(function(data) {
         access_token = data.access_token;
         refresh_token = data.refresh_token;
-        setTimeout(function() {
+        setInterval(function() {
             requestRefreshToken();
         }, (3540000));
         showCurrentSong();
@@ -93,9 +93,6 @@ function requestRefreshToken() {
     .then(response => response.json())
     .then(function(data) {
         access_token = data.access_token;
-        setInterval(function() {
-            requestRefreshToken();
-        }, (3540000));
     });
 }
 
@@ -106,7 +103,7 @@ function showCurrentSong() {
         },
         json: true
     })
-    .then(response => console.log(response))
+    .then(response => response.json())
     .then(function(data) {
         songData = data;
     });
