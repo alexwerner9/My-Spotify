@@ -49,16 +49,7 @@ app.get('/', function(req,res) {
 
 app.post('/search', function(req,res) {
     
-    fetch(`https://api.spotify.com/v1/search?q=${req.body.input}&type=track"`, {
-        headers: {
-            'Authorization':'Bearer ' + access_token
-        },
-        json: true
-    })
-    .then(response => response.json)
-    .then(data, function(data) {
-        res.send(data.items[0].name);
-    });
+    
     
 });
 
