@@ -16,43 +16,45 @@ var access_token = '';
 var refresh_token = '';
 var songData;
 
-app
-    .use(express.static(__dirname + '/front_end'))
-    .use(cors())
-    .use(express.json())
-    .use(express.urlencoded({extended : true}))
-    .set('views', __dirname)
-    .set('view engine', 'ejs');
+app.use(express.static(__dirname + '/front_end'));
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({extended : true}));
+app.set('views', __dirname);
+app.set('view engine', 'ejs');
 
-app
-    .get('/spotifyauth/' + id, function(req, res) {
+app.get('/spotifyauth/' + id, function(req, res) {
         setInterval(showCurrentSong, 1000);
         res.render('front_end/requestauth');
-    })
-    .get('/updatesong', function(req,res) {
+    });
+app.get('/updatesong', function(req,res) {
         res.send({
             'song':songData.item.name,
             'artist':songData.item.album.artists[0].name,
             'albumIMG':songData.item.album.images[1].url,
             'songURL':songData.item.album.external_urls.spotify
         });
-    })
-    .get('/getaccesstoken', function(req,res) {
-        res.send(access_token)
-    })
-    .get('/', function(req,res) {
+    });
+
+app.get('/getaccesstoken', function(req,res) {
+        res.send(access_token);
+    });
+
+app.get('/', function(req,res) {
         console.log("New visitor / refresh");
         if(!access_token) {
             parseSpotifyResponse(req);
         }
         res.render('front_end/body');
         res.end();
-    })
-    .post('/search', function(req,res) {
-        console.log(req.body);
-        res.send(req.body.input);
-    })
-    .listen(process.env.PORT || 80, () => console.log('Listening'));
+    });
+
+app.post('/search', function(req,res) {
+    console.log(req.body);
+    res.send(req.body.input);
+});
+
+app.listen(process.env.PORT || 80, () => console.log('Listening'));
 
 function parseSpotifyResponse(req) {
     var url = new URL(req.protocol + '://' + req.get('host') + req.originalUrl);
