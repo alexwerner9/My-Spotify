@@ -1,9 +1,7 @@
-var http = require('http');
 var fetch = require('node-fetch');
 var express = require('express');
 var app = express();
 var cors = require('cors');
-var path = require('path');
 const { renameSync } = require('fs');
 const { response } = require('express');
 
@@ -50,7 +48,7 @@ app.get('/', function(req,res) {
     });
 
 app.post('/search', function(req,res) {
-    console.log(req.body);
+    console.log(JSON.stringify(req.body));
     res.send(req.body.input);
 });
 
