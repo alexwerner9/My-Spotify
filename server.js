@@ -105,13 +105,14 @@ function requestRefreshToken() {
 }
 
 function showCurrentSong() {
+    console.log("fetching current song");
     fetch('https://api.spotify.com/v1/me/player', {
         headers: {
             'Authorization':'Bearer ' + access_token
         },
         json: true
     })
-    .then(response => console.log(response))
+    .then(response => response.json())
     .then(function(data) {
         console.log(data);
         songData = data;
