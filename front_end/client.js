@@ -18,6 +18,7 @@ var intervalId = window.setInterval(function(){
 
 document.getElementById('search_bar').addEventListener('input', function(element) {
 
+    console.log(element.target.value);
     $.ajax({
         type:'POST',
         url:'http://www.alex-werner.com/search',
