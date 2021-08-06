@@ -76,6 +76,7 @@ express()
     })
     .post("/addsong", function(req,res) {
 
+        console.log(req.body.uri);
         fetch(`https://api.spotify.com/v1/playlists/6BLzQCYejisUVK5teVFwiH/tracks`, {
 
             method:'POST',
