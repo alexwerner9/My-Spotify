@@ -88,7 +88,7 @@ express()
             }
 
         })
-        .then();
+        .then(res.send("Sent"));
 
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));

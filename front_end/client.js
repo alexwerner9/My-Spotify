@@ -80,12 +80,18 @@ function song1Clicked() {
 
     $.ajax({
         type:'POST',
-        url:'http://www.alex-werner.com/search',
-        data:songURIs.song1,
+        url:'http://www.alex-werner.com/addsong',
+        data:JSON.stringify(songURIs.song1),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
+        },
+        success:function(response) {
+            console.log("Added song");
+        },
+        error:function(response) {
+            console.log("Couldnt add song");
         }
-    })
+    });
 
 }
