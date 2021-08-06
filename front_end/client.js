@@ -21,7 +21,6 @@ var doneTypingInterval = 1000;
 var bar = document.getElementById('search_bar');
 
 bar.addEventListener('keyup', function() {
-    console.log(bar);
     clearTimeout(typingTimer);
     if(bar.value) {
         typingTimer = setTimeout(doneTyping, doneTypingInterval);
@@ -38,7 +37,13 @@ function doneTyping() {
             'Content-Type': 'application/json'
         },
         success:function(response) {
-            console.log(response.name + " - " + response.artist);
+            if(document.getElementById('song_results').style.display = "none") {
+                console.log('none');
+                document.getElementById('song_results').style.display = "block";
+            }
+            $("#song1").html(response.song1.name + " - " + response.song1.artist);
+            $("#song2").html(response.song2.name + " - " + response.song2.artist);
+            $("#song3").html(response.song3.name + " - " + response.song3.artist);
         },
         error:function(response) {
             console.log("Couldnt search");
@@ -51,13 +56,11 @@ function playlistClicked() {
     
     if(document.getElementById('panel').style.display == "none") {
         document.getElementById('panel').style.display = "block";
-        document.getElementById('search_bar').style.display = "none";
-        document.getElementById('main_div').style.top = "50%";
+        document.getElementById('search').style.display = "none";
         $('#playlist').html("Add a song to my playlist");        
     } else {
         document.getElementById('panel').style.display = "none";
-        document.getElementById('search_bar').style.display = "initial";
-        document.getElementById('main_div').style.top = "20%";
+        document.getElementById('search').style.display = "initial";
         $('#playlist').html("Return to current song");
     }
 }

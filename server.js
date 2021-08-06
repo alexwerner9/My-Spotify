@@ -55,8 +55,18 @@ express()
         .then(response => response.json())
         .then(function(data) {
             res.send({
-                "name":data.tracks.items[0].name,
-                "artist":data.tracks.items[0].artists[0].name
+                "song1": {
+                    "name":data.tracks.items[0].name,
+                    "artist":data.tracks.items[0].artists[0].name
+                },
+                "song2": {
+                    "name":data.tracks.items[1].name,
+                    "artist":data.tracks.items[1].artists[1].name
+                },
+                "song3": {
+                    "name":data.tracks.items[2].name,
+                    "artist":data.tracks.items[2].artists[2].name
+                },
             });
         });
 
