@@ -27,6 +27,8 @@ bar.addEventListener('keyup', function() {
     }
 });
 
+var songURIs= {}
+
 function doneTyping() {
     $.ajax({
         type:'POST',
@@ -44,6 +46,13 @@ function doneTyping() {
             $("#song1").html(response.song1.name + " - " + response.song1.artist);
             $("#song2").html(response.song2.name + " - " + response.song2.artist);
             $("#song3").html(response.song3.name + " - " + response.song3.artist);
+
+            songURIs = {
+                "song1":response.song1.uri,
+                "song2":response.song2.uri,
+                "song3":response.song3.uri
+            }
+
         },
         error:function(response) {
             console.log("Couldnt search");
@@ -63,4 +72,10 @@ function playlistClicked() {
         document.getElementById('search').style.display = "initial";
         $('#playlist').html("Return to current song");
     }
+}
+
+function song1Clicked() {
+
+    console.log(songURIs.song1);
+
 }

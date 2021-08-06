@@ -57,15 +57,18 @@ express()
             res.send({
                 "song1": {
                     "name":data.tracks.items[0].name,
-                    "artist":data.tracks.items[0].artists[0].name
+                    "artist":data.tracks.items[0].artists[0].name,
+                    "uri":data.tracks.items[0].uri
                 },
                 "song2": {
                     "name":data.tracks.items[1].name,
-                    "artist":data.tracks.items[1].artists[0].name
+                    "artist":data.tracks.items[1].artists[0].name,
+                    "uri":data.tracks.items[1].uri
                 },
                 "song3": {
                     "name":data.tracks.items[2].name,
-                    "artist":data.tracks.items[2].artists[0].name
+                    "artist":data.tracks.items[2].artists[0].name,
+                    "uri":data.tracks.items[2].uri
                 },
             });
         });
