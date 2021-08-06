@@ -58,7 +58,7 @@ body {
 }
 .song_div {
     text-decoration:none;
-    max-width:450px;
+    max-width:300px;
     line-height:50%;
 }
 
@@ -90,11 +90,14 @@ body {
     border-radius:6px;
     color:white;
     border:0;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #song_results {
-    padding:10px;
-    padding-top:20px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    padding-top:5px;
     display:none;
 }
 
@@ -103,12 +106,11 @@ body {
     box-sizing:border-box;
     border:0;
     height:40px;
-    background-color:rgb(39, 39, 39);
+    background-color:rgb(50, 39, 39);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius:6px;
     text-align:center;
     line-height:40px;
-    margin-top:10px;
 }
 .songs:hover {
     box-shadow:none;

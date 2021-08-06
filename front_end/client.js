@@ -17,13 +17,16 @@ var intervalId = window.setInterval(function(){
 }, 2000);
 
 var typingTimer;
-var doneTypingInterval = 1000;
+var doneTypingInterval = 200;
 var bar = document.getElementById('search_bar');
 
 bar.addEventListener('keyup', function() {
     clearTimeout(typingTimer);
     if(bar.value) {
         typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    }
+    if(!bar.value) {
+        document.getElementById('song_results').style.display = "none";
     }
 });
 
@@ -66,7 +69,7 @@ function playlistClicked() {
     if(document.getElementById('panel').style.display == "none") {
         document.getElementById('panel').style.display = "block";
         document.getElementById('search').style.display = "none";
-        $('#playlist').html("Add a song to my playlist");        
+        $('#playlist').html("Add a song to my playlist");
     } else {
         document.getElementById('panel').style.display = "none";
         document.getElementById('search').style.display = "initial";
@@ -88,6 +91,58 @@ function song1Clicked() {
         },
         success:function(response) {
             console.log("Added song");
+            $('#song1').css("background-color","green");
+            $('#song1').html("Added");
+            $('#song1').attr("onclick", "");
+            $("#search_bar").css("pointer-events", "none");
+        },
+        error:function(response) {
+            console.log("Couldnt add song");
+        }
+    });
+
+}
+
+function song2Clicked() {
+
+    $.ajax({
+        type:'POST',
+        url:'http://www.alex-werner.com/addsong',
+        data:JSON.stringify({"uri":songURIs.song2}),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        success:function(response) {
+            console.log("Added song");
+            $('#song2').css("background-color","green");
+            $('#song2').html("Added");
+            $('#song2').attr("onclick", "");
+            $("#search_bar").css("pointer-events", "none");
+        },
+        error:function(response) {
+            console.log("Couldnt add song");
+        }
+    });
+
+}
+
+function song3Clicked() {
+
+    $.ajax({
+        type:'POST',
+        url:'http://www.alex-werner.com/addsong',
+        data:JSON.stringify({"uri":songURIs.song3}),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        success:function(response) {
+            console.log("Added song");
+            $('#song3').css("background-color","green");
+            $('#song3').html("Added");
+            $('#song3').attr("onclick", "");
+            $("#search_bar").css("pointer-events", "none");
         },
         error:function(response) {
             console.log("Couldnt add song");
