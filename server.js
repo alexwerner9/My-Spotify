@@ -84,7 +84,7 @@ express()
                 "Authorization":"Bearer " + access_token
             },
             body: {
-                "uris":req.body
+                "uris":req.body.uri
             }
 
         })
