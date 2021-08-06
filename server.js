@@ -56,7 +56,7 @@ express()
         .then(function(data) {
             res.send({
                 "name":data.tracks.items[0].name,
-                "artist":data.tracks.items[0].artists[0]
+                "artist":data.tracks.items[0].artists[0].name
             });
         });
 
