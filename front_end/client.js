@@ -16,26 +16,36 @@ var intervalId = window.setInterval(function(){
     });
 }, 2000);
 
-document.getElementById('search_bar').addEventListener('input', function(element) {
+var typingTimer;
+var doneTypingInterval = 1000;
+var bar = document.getElementById('search_bar');
 
-    console.log(element.target.value);
+bar.addEventListener('keyup', function() {
+    console.log(bar);
+    clearTimeout(typingTimer);
+    if(bar.value) {
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    }
+});
+
+function doneTyping() {
     $.ajax({
         type:'POST',
         url:'http://www.alex-werner.com/search',
-        data: JSON.stringify({'input':element.target.value}),
+        data: JSON.stringify({'input':document.getElementById('search_bar').value}),
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
         success:function(response) {
-            console.log(response);
+            console.log(response.name + " - " + response.artist);
         },
         error:function(response) {
             console.log("Couldnt search");
         }
     });
+}
 
-});
 
 function playlistClicked() {
     

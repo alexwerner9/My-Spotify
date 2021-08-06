@@ -54,7 +54,10 @@ express()
         })
         .then(response => response.json())
         .then(function(data) {
-            res.send(data.tracks.items[0].name);
+            res.send({
+                "name":data.tracks.items[0].name,
+                "artist":data.tracks.items[0].artists[0]
+            });
         });
 
     })
