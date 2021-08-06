@@ -33,6 +33,7 @@ body {
 }
 .box2:hover {
     background-color:rgb(50,50,50);
+    cursor:pointer;
 }
 
 #song {
@@ -106,13 +107,17 @@ body {
     box-sizing:border-box;
     border:0;
     height:40px;
-    background-color:rgb(50, 39, 39);
+    background-color:rgb(39, 60, 39);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius:6px;
     text-align:center;
     line-height:40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size:20px;
+    margin-bottom:5px;
 }
 .songs:hover {
     box-shadow:none;
-    background-color:rgb(50, 50, 50);
+    background-color:rgb(50, 80, 50);
+    cursor:pointer;
 }

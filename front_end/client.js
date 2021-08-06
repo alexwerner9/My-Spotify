@@ -33,6 +33,10 @@ bar.addEventListener('keyup', function() {
 var songURIs= {}
 
 function doneTyping() {
+    $('.songs').css("background-color", "rgb(39, 60, 39)");
+    $('#song1').attr("onclick", "song1Clicked()");
+    $('#song2').attr("onclick", "song2Clicked()");
+    $('#song3').attr("onclick", "song3Clicked()");
     $.ajax({
         type:'POST',
         url:'http://www.alex-werner.com/search',
@@ -94,7 +98,6 @@ function song1Clicked() {
             $('#song1').css("background-color","green");
             $('#song1').html("Added");
             $('#song1').attr("onclick", "");
-            $("#search_bar").css("pointer-events", "none");
         },
         error:function(response) {
             console.log("Couldnt add song");
@@ -118,7 +121,6 @@ function song2Clicked() {
             $('#song2').css("background-color","green");
             $('#song2').html("Added");
             $('#song2').attr("onclick", "");
-            $("#search_bar").css("pointer-events", "none");
         },
         error:function(response) {
             console.log("Couldnt add song");
@@ -142,7 +144,6 @@ function song3Clicked() {
             $('#song3').css("background-color","green");
             $('#song3').html("Added");
             $('#song3').attr("onclick", "");
-            $("#search_bar").css("pointer-events", "none");
         },
         error:function(response) {
             console.log("Couldnt add song");
