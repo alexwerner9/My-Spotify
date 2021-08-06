@@ -61,11 +61,11 @@ express()
                 },
                 "song2": {
                     "name":data.tracks.items[1].name,
-                    "artist":data.tracks.items[1].artists[1].name
+                    "artist":data.tracks.items[1].artists[0].name
                 },
                 "song3": {
                     "name":data.tracks.items[2].name,
-                    "artist":data.tracks.items[2].artists[2].name
+                    "artist":data.tracks.items[2].artists[0].name
                 },
             });
         });
