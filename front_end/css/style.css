@@ -43,12 +43,14 @@ body {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:30px;
     line-height:100%;
+    position:relative;
 }
 #artist {
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size:27px;
     white-space:nowrap;
     z-index:3;
+    position:relative;
 }
 #albumIMG {
     border-radius:50%;
@@ -56,6 +58,7 @@ body {
     height:70%;
     max-width:300px;
     max-height:300px;
+    position:relative;
 }
 .song_div {
     text-decoration:none;
