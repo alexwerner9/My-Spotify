@@ -45,6 +45,18 @@ express()
         res.end();
     })
     .post('/search', function(req,res) {
+
+        fetch(`https://api.spotify.com/v1/search?q=${req.body.input}&type=track`, {
+            headers: {
+                'Authorization':'Bearer ' + access_token
+            },
+            json: true
+        })
+        .then(response => response.json())
+        .then(function(data) {
+            res.send(data.tracks.items[0].name);
+        });
+
     })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
