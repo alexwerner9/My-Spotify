@@ -78,4 +78,14 @@ function song1Clicked() {
 
     console.log(songURIs.song1);
 
+    $.ajax({
+        type:'POST',
+        url:'http://www.alex-werner.com/search',
+        data:songURIs.song1,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    })
+
 }

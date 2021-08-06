@@ -74,6 +74,23 @@ express()
         });
 
     })
+    .post("/addsong", function(req,res) {
+
+        fetch(`https://api.spotify.com/v1/playlists/6BLzQCYejisUVK5teVFwiH/tracks`, {
+
+            method:'POST',
+            headers: {
+                "Content-Type":"application/json",
+                "Authorization":"Bearer " + access_token
+            },
+            body: {
+                "uris":req.body
+            }
+
+        })
+        .then();
+
+    })
     .listen(process.env.PORT || 80, () => console.log('Listening'));
 
 function parseSpotifyResponse(req) {
