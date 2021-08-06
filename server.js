@@ -77,15 +77,13 @@ express()
     .post("/addsong", function(req,res) {
 
         console.log(req.body.uri);
-        fetch(`https://api.spotify.com/v1/playlists/6BLzQCYejisUVK5teVFwiH/tracks`, {
+        var uri = encodeURIComponent(req.body.uri)
+        fetch(`https://api.spotify.com/v1/playlists/6BLzQCYejisUVK5teVFwiH/tracks?uris=${uri}`, {
 
             method:'POST',
             headers: {
                 "Content-Type":"application/json",
                 "Authorization":"Bearer " + access_token
-            },
-            body: {
-                "uris":req.body.uri
             }
 
         })
